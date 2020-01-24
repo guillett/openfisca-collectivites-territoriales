@@ -28,7 +28,7 @@ import numpy
 simulation = SimulationBuilder().build_default_simulation(tax_benefit_system, length)
 
 period = '2019'
-inputs = ['population_insee', 'nb_residences_secondaires', 'nb_caravanes']
+inputs = ['population_insee', 'nb_residences_secondaires', 'nb_caravanes', 'potentiel_financier']
 for i in inputs:
   simulation.set_input(i, period, numpy.array(data[mapping[i] + period]))
 
@@ -39,9 +39,11 @@ for i in inputs:
 
 
 period = '2019'
-computation_variable = 'strate_demographique'
+computation_variable = 'second_fraction_dotation_solidarite_rurale_eligible'
 computation = simulation.calculate(computation_variable, period)
-result = (data[mapping[computation_variable] + period] != computation)
+base_variable = computation_variable
+base_variable = 'second_fraction_dotation_solidarite_rurale'
+result = ((data[mapping[base_variable] + period] > 0) != computation)
 
 ko = sum(result)
 print(ko)
