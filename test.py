@@ -1,3 +1,4 @@
+import datetime
 import pandas
 from openfisca_collectivites_territoriales import CountryTaxBenefitSystem
 
@@ -16,7 +17,6 @@ file_path_2018 = 'data/2018-communes-criteres-repartition.csv'
 data_2018 = pandas.read_csv(file_path_2018, low_memory=False)
 
 data = data_2019.set_index(mapping['depcom']).join(data_2018.set_index(mapping['depcom']), lsuffix='2019', rsuffix='2018')
-# data = data_2019.set_index(mapping['depcom']).join(data_2018.set_index(mapping['depcom']), on=mapping['depcom'], lsuffix="2019", rsuffix="2018")
 
 from openfisca_core.simulation_builder import SimulationBuilder
 import numpy
@@ -36,11 +36,12 @@ for i in inputs:
 
 period = '2019'
 population_dgf = simulation.calculate('population_dgf', period)
-result = (data_2019[mapping['population_dgf']] != population_dgf)
+result = (data[mapping['population_dgf'] + period] != population_dgf)
 
 ko = sum(result)
 print(ko)
 print((length - ko)/ length)
 
-with pandas.ExcelWriter('error.xlsx') as writer:
-  data_2019[result].to_excel(writer, sheet_name='error')
+prefix = str(datetime.datetime.now()).replace(':', '-').replace(' ', '--')
+with pandas.ExcelWriter(prefix + 'error.xlsx') as writer:
+  data[result].to_excel(writer, sheet_name='error')
