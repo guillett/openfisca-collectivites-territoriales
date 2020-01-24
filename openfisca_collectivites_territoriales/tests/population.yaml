@@ -1,0 +1,5 @@
+- period: 2019
+  input:
+    population_insee: 100
+  output:
+    population_dgf: 100
