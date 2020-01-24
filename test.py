@@ -18,6 +18,10 @@ data_2018 = pandas.read_csv(file_path_2018, low_memory=False)
 
 data = data_2019.set_index(mapping['depcom']).join(data_2018.set_index(mapping['depcom']), lsuffix='2019', rsuffix='2018')
 
+# prefix = str(datetime.datetime.now()).replace(':', '-').replace(' ', '--')
+# with pandas.ExcelWriter(prefix + 'head.xlsx') as writer:
+#   data.head(n=100).to_excel(writer, sheet_name='error')
+
 from openfisca_core.simulation_builder import SimulationBuilder
 import numpy
 
@@ -35,8 +39,9 @@ for i in inputs:
 
 
 period = '2019'
-population_dgf = simulation.calculate('population_dgf', period)
-result = (data[mapping['population_dgf'] + period] != population_dgf)
+computation_variable = 'strate_demographique'
+computation = simulation.calculate(computation_variable, period)
+result = (data[mapping[computation_variable] + period] != computation)
 
 ko = sum(result)
 print(ko)
