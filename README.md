@@ -1,4 +1,4 @@
-# OpenFisca CollectivitesTerritoriales
+# OpenFisca Collectivites-Territoriales
 
 
 The country whose law is modelled here has a very simple tax and benefit system.
@@ -7,14 +7,14 @@ The country whose law is modelled here has a very simple tax and benefit system.
 - On the first of December, 2015, it introduced a basic income for all its citizens of age who have no income.
 - On the first of December, 2016, it removed the income condition, providing all its adult citizens with a basic income.
 
-These elements are described in different folders. All the modelling happens within the `openfisca_collectivitesterritoriales` folder.
+These elements are described in different folders. All the modelling happens within the `openfisca_collectivites_territoriales` folder.
 
 - The rates are in the `parameters` folder.
 - The formulas are in the `variables` folder.
 - This country package comes also with *reforms* in the `reforms` folder. This is optional: your country may exist without defining any reform.
-    - In this country, there is [a reform project](./openfisca_collectivitesterritoriales/reforms/modify_social_security_taxation.py) aiming to modify the social security taxation, deleting the first bracket, raising the intermediary ones and adding a new bracket with a higher tax rate of `40 %` for people earning more than `40000`. This reform project would apply starting from `2017-01-01`.
+    - In this country, there is [a reform project](./openfisca_collectivites_territoriales/reforms/modify_social_security_taxation.py) aiming to modify the social security taxation, deleting the first bracket, raising the intermediary ones and adding a new bracket with a higher tax rate of `40 %` for people earning more than `40000`. This reform project would apply starting from `2017-01-01`.
 
-The files that are outside from the `openfisca_collectivitesterritoriales` folder are used to set up the development environment.
+The files that are outside from the `openfisca_collectivites_territoriales` folder are used to set up the development environment.
 
 ## Packaging your Country Package for Distribution
 
@@ -80,7 +80,7 @@ pip --version  # should print at least 9.0.
 Install the Country Package:
 
 ```sh
-pip install openfisca_collectivitesterritoriales
+pip install openfisca_collectivites_territoriales
 ```
 
 :tada: This OpenFisca Country Package is now installed and ready!
@@ -121,8 +121,8 @@ pip --version  # should print at least 9.0.
 Clone this Country Package on your machine:
 
 ```sh
-git clone https://github.com/openfisca/openfisca-collectivitesterritoriales.git
-cd openfisca-collectivitesterritoriales
+git clone https://github.com/openfisca/OpenFisca-Collectivites-Territoriales.git
+cd OpenFisca-Collectivites-Territoriales
 pip install --editable .[dev]
 ```
 

@@ -14,9 +14,9 @@ jobs:
       - run:
           name: Create a virtualenv
           command: |
-            mkdir -p /tmp/venv/collectivitesterritoriales
-            python -m venv /tmp/venv/collectivitesterritoriales
-            echo "source /tmp/venv/collectivitesterritoriales/bin/activate" >> $BASH_ENV
+            mkdir -p /tmp/venv/Collectivites-Territoriales
+            python -m venv /tmp/venv/Collectivites-Territoriales
+            echo "source /tmp/venv/Collectivites-Territoriales/bin/activate" >> $BASH_ENV
 
       - run:
           name: Install dependencies
@@ -27,7 +27,7 @@ jobs:
       - save_cache:
           key: v1-py3-deps-{{ checksum "setup.py" }}
           paths:
-            - /tmp/venv/collectivitesterritoriales
+            - /tmp/venv/Collectivites-Territoriales
 
       - save_cache:
           key: v1-py3-build-{{ .Revision }}
@@ -74,7 +74,7 @@ jobs:
       - run:
           name: Upload a Python package to Pypi
           command: |
-            source /tmp/venv/collectivitesterritoriales/bin/activate
+            source /tmp/venv/Collectivites-Territoriales/bin/activate
             twine upload dist/* --username $PYPI_USERNAME --password $PYPI_PASSWORD
 
       - run:

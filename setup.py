@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name = "OpenFisca-CollectivitesTerritoriales",
+    name = "OpenFisca-Collectivites-Territoriales",
     version = "3.9.6",
     author = "OpenFisca Team",
     author_email = "contact@openfisca.org",
@@ -14,7 +14,7 @@ setup(
         "Programming Language :: Python",
         "Topic :: Scientific/Engineering :: Information Analysis",
         ],
-    description = "OpenFisca tax and benefit system for CollectivitesTerritoriales",
+    description = "OpenFisca tax and benefit system for Collectivites-Territoriales",
     keywords = "benefit microsimulation social tax",
     license ="http://www.fsf.org/licensing/licenses/agpl-3.0.html",
     url = "https://github.com/openfisca/country-template",
